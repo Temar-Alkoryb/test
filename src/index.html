@@ -25,20 +25,20 @@
     <![endif]-->
 
     <div class="container" ng-controller="MainController as main">
-    
+
     	<div class="form-group col-md-12">
     	  <input type="text" name="search"
     	  		 class="form-control"
     	  		 ng-model="search"
     	  value="" placeholder="" id="" />
     	</div>
-      
+
     	<table class="table table-hover">
 			<thead>
 			  <tr>
-				<th>Date</th>
-				<th>Rand</th>
-				<th>Clicks</th>
+          <th>Clicks</th>
+  				<th>Date</th>
+  				<th>Rand</th>
 			  </tr>
 			</thead>
 
@@ -47,17 +47,17 @@
 					data-target="#accordion"
 					class="clickable"
 					ng-repeat="row in main.rows | filter:search track by $index"
-					ng-click="vm.addClick($index)";>
-					<td ng-bind="row.date"></td>
-					<td ng-bind="row.randomNum"></td>
-					<td ng-bind="row.clicks" ng-model="row.clicks"></td>
+					ng-click="main.addClick($index)";>
+          <td ng-bind="row.clicks" ng-model="row.clicks"></td>
+					<td ng-show="row.visible" ng-bind="row.date"></td>
+					<td ng-show="row.visible" ng-bind="row.randomNum"></td>
 				</tr>
 			</tbody>
 		</table>
-      
-    
+
+
     </div>
-    
+
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
